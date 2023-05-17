@@ -1,9 +1,12 @@
-# skimGPT
+# SkimGPT
 
 ![Team Photo](Insert a Team Photo URL here)
 [*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
-
 TODO: short project description, some sample screenshots or mockups
+
+#### Mockups
+<img src="https://hackmd.io/_uploads/HkkgYozr2.png" width="500" />
+
 
 ## Architecture
 
@@ -13,6 +16,18 @@ TODO:  descriptions of code organization and tools and libraries used
     - should have several views
     - should have styling!
 
+- Chrome Extension Architecture
+    - manifest.json
+    - service-worker.js
+    - scripts
+    - popup
+    - options
+    - icons 
+
+- APIs used
+    - OpenAI API
+    - Google's Storage API
+
 - API server backend
     - should persist data to a database
     - should have multiple datatypes stored
@@ -21,10 +36,14 @@ TODO:  descriptions of code organization and tools and libraries used
 ## Setup
 
 TODO: how to get the project dev environment up and running, npm install etc
+- npm install
+- npm run dev
 
 ## Deployment
 
-TODO: how to deploy the project
+- go to [Chrome Extensions page](chrome://extensions/)
+- In developer mode, click "load unpacked"
+- select the dist file, which has manifest.json file
 
 ## Authors
 
@@ -34,5 +53,9 @@ TODO: how to deploy the project
 - Gyuri Hwang
 - Kyle Huang
 - Pedro Campos
+
+## Helpful Links
+- [Figma file](https://www.figma.com/file/bDGGy0l1fZnR99euhXYUt4/CS52?type=design&node-id=123-515&t=wMqvLj19qurAnJrV-0)
+- [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
 
 ## Acknowledgments
