@@ -1,9 +1,12 @@
-# skimGPT
+# SkimGPT
 
 ![Team Photo](Insert a Team Photo URL here)
 [*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
-
 TODO: short project description, some sample screenshots or mockups
+
+#### Mockups
+<img src="https://hackmd.io/_uploads/HkkgYozr2.png" width="500" />
+
 
 ## Architecture
 
@@ -33,6 +36,8 @@ TODO:  descriptions of code organization and tools and libraries used
 ## Setup
 
 TODO: how to get the project dev environment up and running, npm install etc
+- npm install
+- npm run dev
 
 ## Deployment
 
@@ -54,4 +59,3 @@ TODO: how to get the project dev environment up and running, npm install etc
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
 
 ## Acknowledgments
-
