@@ -1,4 +1,5 @@
 import React from 'react';
+import Tools from './tools';
 
 function App(props) {
   return (
@@ -11,9 +12,7 @@ function App(props) {
           </h2>
         </div>
         <div className="right-panel">
-          <h2>
-            col 2
-          </h2>
+          <Tools />
         </div>
       </div>
     </div>
