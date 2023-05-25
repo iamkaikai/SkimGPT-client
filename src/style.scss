@@ -10,14 +10,14 @@ body, html {
 	text-size-adjust: 100%;
 }
 
-.two-panel {
+.left-panel {
+	background: #ddd;
+	height: 100%;
 	display: flex;
 }
-
-.left-panel {
-	width: 50vw;
-}
-
+  
 .right-panel {
-	width: 50vw;
+	background: #d5d7d9;
+	height: 100%;
+	display: flex;
 }
