@@ -10,14 +10,18 @@ body, html {
 	text-size-adjust: 100%;
 }
 
-.two-panel {
-	display: flex;
+.app-container{
+	height: 100vh;
 }
 
 .left-panel {
-	width: 50vw;
+	background: #ddd;
+	height: 100%;
+	display: flex;
 }
-
+  
 .right-panel {
-	width: 50vw;
+	background: #d5d7d9;
+	height: 100%;
+	display: flex;
 }
