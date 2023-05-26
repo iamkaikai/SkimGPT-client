@@ -8,7 +8,7 @@ function App(props) {
 
   return (
     <div className="app-container">
-      <h1>SkimGPT</h1>
+      <h1 className="title">Skim<span>GPT</span></h1>
       <SplitPane
         split="vertical"
         sizes={sizes}
