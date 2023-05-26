@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Clipboard from 'react-clipboard.js';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import Summary from './summary';
 
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
@@ -29,7 +30,7 @@ function Tools(props) {
       return (
         <div>
           <div ref={printRef} id="summary">
-            This is the summary
+            <Summary />
           </div>
           <Clipboard data-clipboard-target="#summary" onSuccess={() => { console.log('success'); }}>
             copy to clipboard
