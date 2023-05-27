@@ -5,7 +5,7 @@ import 'split-pane-react/esm/themes/default.css';
 
 function sidebar(props) {
   return (
-    <h2 className="this">sidebar content</h2>
+    <h1 className="title">sidebar content</h1>
   );
 }
 
