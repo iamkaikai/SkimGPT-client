@@ -4,6 +4,7 @@ body, html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	display: flex !important;
 }
 
 :root {
@@ -42,4 +43,14 @@ body, html {
 	background: #ffffff;
 	height: 100%;
 	display: flex;
+}
+
+.sidebar{
+	width: 25vw;
+    height: 100vh;
+    text-align: left;
+    max-width: 800px;
+	background: #ccc;
+	position: fixed;
+    right: 0;
 }
