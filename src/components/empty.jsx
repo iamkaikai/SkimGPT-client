@@ -21,15 +21,15 @@ function Summary(props) {
   // };
 
   return (
-    <div>
-      <div>
+    <div className="empty">
+      <div className="empty_title">
         Summary Mode is Currently Turned Off
         {/* {summary.title} */}
       </div>
-      <div>
+      <div className="empty_description">
         This feature allows you to quickly grasp the essence of your data. Enable it to see your data in a simplified and more digestible format.
       </div>
-      <button type="button">Turn On</button>
+      <button className="empty_button" type="button">Turn On</button>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SplitPane, { Pane } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
-import Tools from './tools';
+// import Tools from './tools';
+import Empty from './empty';
 
 function App(props) {
   const [sizes, setSizes] = useState(['70%', 'auto']);
@@ -20,7 +21,7 @@ function App(props) {
           </div>
         </Pane>
         <div className="right-panel">
-          <Tools />
+          <Empty />
         </div>
       </SplitPane>
     </div>
