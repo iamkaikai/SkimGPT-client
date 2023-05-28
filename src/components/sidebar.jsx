@@ -5,31 +5,34 @@ import 'split-pane-react/esm/themes/default.css';
 import Tools from './tools';
 
 function Sidebar(props) {
-  console.log('asdf');
   const [loading, setLoading] = useState('null');
+  const [response, setResponse] = useState(null);
   const currentUrl = window.location.href;
-  let response;
+  const maxAttempts = 3;
 
-  const submit = () => {
+  const submit = (attempt = 1) => {
     console.log(currentUrl);
     setLoading('start');
-  };
 
-  if (loading === 'start') {
-    (async () => {
-      try {
-        console.log(currentUrl);
-        console.log('loading summarizer...');
-        const data = { url: currentUrl };
-        response = await axios.post('https://skimgpt-api.onrender.com/api/summarizer', data, { timeout: 180000 });
-        console.log(response);
-        setLoading('pending');
-      } catch (error) {
+    console.log(currentUrl);
+    console.log('loading summarizer...');
+    const data = { url: currentUrl };
+    axios.post('https://skimgpt-api.onrender.com/api/summarizer', data, { timeout: 200000 })
+      .then((res) => {
+        console.log(res);
+        setLoading('done');
+        setResponse(res);
+      })
+      .catch((error) => {
         console.error(error);
-        setLoading('error');
-      }
-    })();
-  }
+        if (attempt < maxAttempts) {
+          console.log(`Attempt ${attempt} failed. Retrying...`);
+          submit(attempt + 1);
+        } else {
+          setLoading('error');
+        }
+      });
+  };
 
   let content = null;
 
@@ -42,8 +45,8 @@ function Sidebar(props) {
       </div>
     );
   } else if (loading === 'done') {
-    content = <p>{response?.data?.general?.overview}</p>;
     // You can also render <Tools /> component here if needed
+    content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
@@ -53,7 +56,6 @@ function Sidebar(props) {
   } else {
     content = (
       <div className="loadingWrapper">
-        <div alt="" id="loading" />
         <p>loading...</p>
       </div>
     );

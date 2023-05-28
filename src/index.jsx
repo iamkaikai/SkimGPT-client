@@ -5,7 +5,6 @@ import SideBar from './components/sidebar';
 
 let done = false;
 
-console.log('72vw');
 // Get a reference to the body element
 const body = document.getElementsByTagName('body')[0];
 
@@ -24,7 +23,6 @@ body.appendChild(mainContainer);
 done = true;
 
 if (done) {
-  console.log('append sidebar');
   const sidebar = document.createElement('div');
   document.body.appendChild(sidebar);
   ReactDOM.render(<SideBar />, sidebar);
