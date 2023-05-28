@@ -219,6 +219,7 @@ body, html {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	user-select: none;
 }
 
 .dropdown-label {
@@ -245,6 +246,27 @@ body, html {
 #expand-icon:hover {
 	opacity: 50%;
 	cursor: pointer;
+}
+
+.dropdown-options {
+	position: absolute;
+	border-style: solid;
+	border-radius: 8px;
+	border-color: #CCCCCC;
+	width: 340px;
+	background-color: white;
+}
+
+.dropdown-item {
+	cursor: pointer;
+	transition: all 0.2s;
+	padding: 20px 20px;
+	font-size: 14px;
+}
+
+.dropdown-item:hover {
+	background-color: #f3f3f3;
+	opacity: 70%;
 }
 
 #section-tone {
