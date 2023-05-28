@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Clipboard from 'react-clipboard.js';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import Summary from './summary';
 
 function Tools(props) {
@@ -29,13 +31,17 @@ function Tools(props) {
     if (tab === 'summary') {
       return (
         <div>
+          <div className="icon-btn-container">
+            <Clipboard data-clipboard-target="#summary" className="icon-btn" onSuccess={() => { console.log('success'); }}>
+              <ContentCopyOutlinedIcon />
+            </Clipboard>
+            <button type="button" className="icon-btn" onClick={handleDownloadPdf}>
+              <FileDownloadOutlinedIcon />
+            </button>
+          </div>
           <div ref={printRef} id="summary">
             <Summary />
           </div>
-          <Clipboard data-clipboard-target="#summary" onSuccess={() => { console.log('success'); }}>
-            copy to clipboard
-          </Clipboard>
-          <button type="button" onClick={handleDownloadPdf}>Download as PDF</button>
         </div>
 
       );
@@ -50,10 +56,13 @@ function Tools(props) {
 
   return (
     <div>
-      <button type="button" className="tabs" onClick={() => { switchTab('summary'); }}>Summary</button>
-      <button type="button" className="tabs" onClick={() => { switchTab('tone'); }}>Tone</button>
+      <div className="tabs-container">
+        <button type="button" className="tab" onClick={() => { switchTab('summary'); }}>Summary</button>
+        <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Tone</button>
+      </div>
       {tabs()}
     </div>
+
   );
 }
 
