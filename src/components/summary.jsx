@@ -9,7 +9,10 @@ function Summary(props) {
       const temp = `<div className="summaryText">
         ${sections[currSection].content}
         </div>`;
-      ${'#entire-summary'}.innerHTML += temp;
+      $('#entire-summary').innerHTML += temp;
+      // $('#entire-summary').append(`<div className="summaryText">
+      // ${sections[currSection].content}
+      // </div>`);
       currId += 1;
       currSection = `section${toString(currId)}`;
     }
