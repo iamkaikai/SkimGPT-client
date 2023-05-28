@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-function Dropdown() {
+function Dropdown({ selected, setSelected }) {
+  const [isActive, setIsActive] = useState(false);
+  const options = ['Straightforward', 'Nice', 'Aggressive', 'Controversial'];
+
   return (
     <div>
-      <div className="dropdown-btn">
-        Select One
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
+        {selected}
         <div id="expand-icon">
           <ExpandMoreIcon />
         </div>
       </div>
-      <div className="dropdown-options">
-        <div className="dropdown-item">Straightforward</div>
-        <div className="dropdown-item">Nice</div>
-        <div className="dropdown-item">Aggressive</div>
-        <div className="dropdown-item">Controversial</div>
-      </div>
+      {isActive && (
+        <div className="dropdown-options">
+            {options.map((option) => (
+              // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+              <div
+                onClick={(e) => {
+                  setSelected(option);
+                  setIsActive(false);
+                }}
+                className="dropdown-item"
+              >
+                {option}
+              </div>
+            ))}
+        </div>
+      )}
     </div>
 
   );
