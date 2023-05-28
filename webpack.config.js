@@ -30,6 +30,7 @@ module.exports = {
   },
   output: {
     filename: 'content.js',
+    publicPath: '',
     path: path.resolve(__dirname, 'extension'),
   },
 };

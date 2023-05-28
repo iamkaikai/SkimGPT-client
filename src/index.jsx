@@ -26,7 +26,6 @@ done = true;
 if (done) {
   console.log('append sidebar');
   const sidebar = document.createElement('div');
-  sidebar.classList.add('sidebar');
   document.body.appendChild(sidebar);
   ReactDOM.render(<SideBar />, sidebar);
 }
