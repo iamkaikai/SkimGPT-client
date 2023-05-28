@@ -53,12 +53,14 @@ body, html {
 }
 
 .tab {
-	margin-bottom: 1em;
+	padding-bottom: 1em;
 	padding: 10px 20px;
 	font-size: 18px;
 	background-color: transparent;
-	border-style: none;
+	border-style: none none solid none;
 	color: #999999;
+	border-color: transparent;
+	border-width: 1px;
 }
 
 .tab:hover {
@@ -69,6 +71,12 @@ body, html {
 .tab:focus {
 	color: #5F8BFF;
 	border-color: #5F8BFF;
+	border-width: 2px;
+}
+
+.content {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #title {
@@ -121,18 +129,58 @@ body, html {
 }
 
 #section-title {
-	font-size: 16px;
+	font-size: 18px;
 	margin-top: 2em;
-	margin-bottom: 1em;
+	margin-bottom: 1.3em;
 	font-weight: 400;
 }
 
-#section-content {
+#section-summary {
 	border: solid;
 	border-radius: 8px;
 	padding: 20px 20px 20px 20px;
 	border-width: 1px;
 	border-color:#dddddd; 
+	font-size: 14px;
+	line-height: 1.8;
+}
+
+.dropdown {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dropdown-label {
+	color: #999999;
+	font-size: 15px;
+}
+
+.dropdown-btn {
+	border-style: solid;
+	border-radius: 8px;
+	border-color: #CCCCCC;
+	width: 300px;
+	padding: 10px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 14px;
+}
+
+#expand-icon {
+	color:#535353;
+}
+
+#expand-icon:hover {
+	opacity: 50%;
+	cursor: pointer;
+}
+
+#section-tone {
+	border: none;
 	font-size: 14px;
 	line-height: 1.8;
 }
