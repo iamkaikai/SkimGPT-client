@@ -1,6 +1,5 @@
 body, html {
-	font-family: "Roboto", sans-serif;
-	// background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,pink 100%);
+	font-family: "SF Pro Text","SF Pro Icons", -apple-system, BlinkMacSystemFont, 'Roboto', "Helvetica Neue","Helvetica","Arial",sans-serif;
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -46,15 +45,54 @@ body, html {
 }
 
 .sidebar{
-	width: 25vw;
+	width: 28vw;
     height: 100vh;
     text-align: left;
     max-width: 800px;
-	background: #ccc;
+	background: #fff;
 	position: fixed;
     right: 0;
+	border-left: #DEDEDE solid 3px;
+	display: flex;
 
 	h1{
 		margin: 0;
+	}
+
+	h2{
+		color: #333;
+		font-size: 20px;
+		font-weight: 500;
+	}
+
+	p{
+		font-size: 11px;
+		line-height: 16px;
+		color: #999;
+	}
+
+	button{
+		margin-top: 6px;
+		background: #5F8BFF;
+		border-radius: 8px;
+		color: white;
+		border: none;
+		font-size: 13px;
+		padding: 12px 20px;
+		cursor: pointer;
+	}
+
+	button:hover{
+		background: rgb(123, 159, 255);
+	}
+
+	button:active{
+		background: #507bf1;
+	}
+
+	#start_main{
+		text-align: center;
+		align-self: center;
+		padding: 0 12px;
 	}
 }

@@ -5,7 +5,7 @@ import SideBar from './components/sidebar';
 
 let done = false;
 
-console.log('75vw');
+console.log('72vw');
 // Get a reference to the body element
 const body = document.getElementsByTagName('body')[0];
 
