@@ -41,7 +41,7 @@ TODO: how to get the project dev environment up and running, npm install etc
 
 ## Deployment
 
-- go to [Chrome Extensions page](chrome://extensions/)
+- go to Chrome Extensions page(chrome://extensions/)
 - In developer mode, click "load unpacked"
 - select the dist file, which has manifest.json file
 
