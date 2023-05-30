@@ -1,25 +1,49 @@
+// import axios from 'axios';
 import React from 'react';
 
 function Summary(props) {
-  $.getJSON('../../frontend.json', (data) => {
-    const { sections } = data;
-    let currId = 1;
-    let currSection = `section${toString(currId)}`;
-    while (sections[currSection] != null) {
-      const temp = `<div className="summaryText">
-        ${sections[currSection].content}
-        </div>`;
-      $('#entire-summary').innerHTML += temp;
-      // $('#entire-summary').append(`<div className="summaryText">
-      // ${sections[currSection].content}
-      // </div>`);
-      currId += 1;
-      currSection = `section${toString(currId)}`;
-    }
-  });
+  // const [summary, setSummary] = useState({
+  //   title: '',
+  //   num_sections: '',
+  //   overview: '',
+  //   result_html: '',
+  // });
+
+  // const [section, setSection] = useState({
+  //   id: '',
+  //   length: '',
+  //   title: '',
+  //   overview: '',
+  //   content: '',
+  // });
+
   return (
-    <div id="entire-summary">
-      Hello
+    <div>
+      <div id="title">
+        CS 10 | Problem solving
+        {/* {summary.title} */}
+      </div>
+      <div id="subinfo">
+        25 key-points | 540 words | 10 mins
+      </div>
+      <div id="tags">
+        <p>Dijkstra&apos;s algorithm</p>
+        <p>A* search</p>
+        <p>Implicit graphs</p>
+        <p>Shortest-path simulation</p>
+      </div>
+
+      <div>
+        <div id="section-title">
+          Shortest paths
+          {/* {section.title} */}
+        </div>
+        <div id="section-summary">
+          BFS works well to find paths with the minimum number of edges, but it is also useful to find shortest-total-distance routes and fastest routes in a network.
+          {/* {section.content} */}
+        </div>
+      </div>
+
     </div>
   );
 }
