@@ -3,6 +3,7 @@
 ![Team Photo](Insert a Team Photo URL here)
 [*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
 TODO: short project description, some sample screenshots or mockups
+SkimGPT is a Chrome extension built to help the users efficiently digest online articles and blog posts. It uses GPT to generate summary of the webpage the user is currently on and displays it on the side.
 
 #### Mockups
 <img src="https://hackmd.io/_uploads/HkkgYozr2.png" width="500" />
@@ -10,40 +11,24 @@ TODO: short project description, some sample screenshots or mockups
 
 ## Architecture
 
-TODO:  descriptions of code organization and tools and libraries used
-- Frontend webapp
-    - should read/write data from API
-    - should have several views
-    - should have styling!
-
 - Chrome Extension Architecture
-    - manifest.json
-    - service-worker.js
-    - scripts
-    - popup
-    - options
-    - icons 
+    - manifest.json enables the code to be run as Chrome extension.
 
 - APIs used
     - OpenAI API
-    - Google's Storage API
-
-- API server backend
-    - should persist data to a database
-    - should have multiple datatypes stored
 
 
 ## Setup
-
-TODO: how to get the project dev environment up and running, npm install etc
 - npm install
 - npm run dev
+
 
 ## Deployment
 
 - go to Chrome Extensions page(chrome://extensions/)
 - In developer mode, click "load unpacked"
-- select the dist file, which has manifest.json file
+- select the extension folder, within the project file. The extension folder should be  which has manifest.json file
+
 
 ## Authors
 
