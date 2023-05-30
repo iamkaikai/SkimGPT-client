@@ -32,7 +32,7 @@ function Sidebar(props) {
   useEffect(() => {
     console.log(parsedHtml);
     if (parsedHtml) {
-      // props.addHtml(parsedHtml);
+      props.addHtml(parsedHtml);
       console.log('sent back to index.jsx');
     }
   }, [parsedHtml]);
@@ -42,16 +42,11 @@ function Sidebar(props) {
     setOpen(!open);
   };
 
-<<<<<<< Updated upstream
   console.log('inside sidebar');
 
   console.log(currentUrl);
 
   const encodedURL = encodeURIComponent(currentUrl);
-=======
-  const encodedURL = encodeURIComponent(currentUrl);
-
->>>>>>> Stashed changes
   // get request
   const callGet = () => {
     axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
@@ -60,12 +55,8 @@ function Sidebar(props) {
       },
     })
       .then((res) => {
-<<<<<<< Updated upstream
         console.log(res); // this is entire summarizer btw
         setParsedHtml(res.data.general.result_html);
-=======
-        console.log(res.data);
->>>>>>> Stashed changes
       });
   };
 
@@ -80,7 +71,6 @@ function Sidebar(props) {
       .then((res) => {
         callGet();
       });
-<<<<<<< Updated upstream
 
     // callGet();
 
@@ -96,8 +86,6 @@ function Sidebar(props) {
     //       setLoading('error');
     //     }
     //   });
-=======
->>>>>>> Stashed changes
   };
 
   // display content

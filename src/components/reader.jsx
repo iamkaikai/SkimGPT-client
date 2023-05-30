@@ -4,6 +4,8 @@ import Toggle from 'react-toggle';
 export default function reader(props) {
   const [mode, setMode] = useState(false);
 
+  console.log(props.html);
+
   const modeChange = (event) => {
     setMode(event.target.checked);
   };

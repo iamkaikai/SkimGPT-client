@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import { createRoot } from 'react-dom/client';
 import SideBar from './components/sidebar';
 import Reader from './components/reader';
+
+const [html, setHtml] = useState(null);
+
+const addHtml = (input) => {
+  setHtml(input);
+};
 
 // Get a reference to the body element
 // Create a new container div
@@ -27,7 +33,7 @@ document.body.appendChild(reader);
 const comp1 = createRoot(reader);
 const comp2 = createRoot(sidebar);
 
-comp1.render(<Reader />);
-comp2.render(<SideBar />);
+comp1.render(<Reader html={html} />);
+comp2.render(<SideBar addHtml={addHtml} />);
 
 body.appendChild(mainContainer);
