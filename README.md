@@ -1,8 +1,7 @@
 # SkimGPT
 
-![Team Photo](Insert a Team Photo URL here)
-[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
-TODO: short project description, some sample screenshots or mockups
+![Team Photo](Insert a Team Photo URL here) <br>
+[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files) <br>
 SkimGPT is a Chrome extension built to help the users efficiently digest online articles and blog posts. It uses GPT to generate summary of the webpage the user is currently on and displays it on the side.
 
 #### Mockups
