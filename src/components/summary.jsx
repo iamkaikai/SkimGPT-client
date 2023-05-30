@@ -37,7 +37,7 @@ function Summary(props) {
           Shortest paths
           {/* {section.title} */}
         </div>
-        <div id="section-summary">
+        <div id="section-content">
           BFS works well to find paths with the minimum number of edges, but it is also useful to find shortest-total-distance routes and fastest routes in a network.
           {/* {section.content} */}
         </div>

@@ -14,7 +14,14 @@ body, html {
 // 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 // }
 
-.app-container{
+.app-container-inactive {
+	display: none;
+	transition: 0.2s;
+}
+
+.app-container-active{
+	visibility: visible;
+	transition: 0.2s;
 	width: 28vw;
     height: 100vh;
     text-align: left;

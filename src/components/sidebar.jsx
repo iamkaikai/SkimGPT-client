@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import SplitPane, { Pane } from 'split-pane-react';
 // import 'split-pane-react/esm/themes/default.css';
 import CloseIcon from '@mui/icons-material/Close';
@@ -9,26 +9,40 @@ import Tools from './tools';
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
+  const [open, setOpen] = useState(true);
   const currentUrl = window.location.href;
   const maxAttempts = 3;
+  const sidebarRef = useRef();
+  console.log(open);
 
+  // closing the extension when clicking outside
+  // source: https://www.youtube.com/watch?v=HfZ7pdhS43s
+  useEffect(() => {
+    const handler = (e) => {
+      if (!sidebarRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+  });
+
+  // closing button
+  const handleClose = () => {
+    setOpen(!open);
+  };
+
+  // turn on summarizer
   const submit = (attempt = 1) => {
-    console.log(currentUrl);
     setLoading('start');
 
-    console.log(currentUrl);
-    console.log('loading summarizer...');
     const data = { url: currentUrl };
     axios.post('https://skimgpt-api.onrender.com/api/summarizer', data, { timeout: 200000 })
       .then((res) => {
-        console.log(res);
         setLoading('done');
         setResponse(res);
       })
       .catch((error) => {
-        console.error(error);
         if (attempt < maxAttempts) {
-          console.log(`Attempt ${attempt} failed. Retrying...`);
           submit(attempt + 1);
         } else {
           setLoading('error');
@@ -36,6 +50,7 @@ function Sidebar(props) {
       });
   };
 
+  // display content
   let content = null;
 
   if (loading === 'null') {
@@ -48,8 +63,8 @@ function Sidebar(props) {
     );
   } else if (loading === 'done') {
     // You can also render <Tools /> component here if needed
-    // content = <Tools />;
-    content = <p>{response?.data?.general?.overview}</p>;
+    content = <Tools />;
+    // content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
@@ -65,12 +80,12 @@ function Sidebar(props) {
   }
 
   return (
-    <div className="app-container">
+    <div className={`app-container${open ? '-active' : '-inactive'}`} ref={sidebarRef}>
       <div className="header">
         <div>
           Skim<span>GPT</span>
         </div>
-        <CloseIcon id="closeicon" />
+        <CloseIcon id="closeicon" onClick={handleClose} open={open} />
       </div>
       <div className="sidebar">
         {content}
