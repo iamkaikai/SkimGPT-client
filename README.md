@@ -4,6 +4,8 @@
 [*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files) <br>
 SkimGPT is a Chrome extension built to help the users efficiently digest online articles and blog posts. It uses GPT to generate summary of the webpage the user is currently on and displays it on the side.
 
+*Disclaimer: Due to the nature of GPT, the summarizer may take from 1 to 2 minutes to generate the result.*
+
 Problem statement:
 
 Research papers, news articles, and even blog posts are all relatively lengthy and require quite a bit of time out of people's days to read. Society is very fast paced, so not that many people feel like they have time to sit down and read an article. So how can we get the most relevant information as quickly as possible? And if the individual reads it, will they enjoy reading the article if the writer is extremely biased or opinionated?
