@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import 'split-pane-react/esm/themes/default.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Tools from './tools';
+import { current } from '@reduxjs/toolkit';
 
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
@@ -31,23 +32,54 @@ function Sidebar(props) {
     setOpen(!open);
   };
 
+  console.log('inside sidebar');
+
+  console.log(currentUrl);
+
+  let encodedURL = encodeURIComponent(currentUrl);
+
+  // get request
+  const callGet = () => {
+    axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      params: {
+        url: encodedURL,
+      }
+    })
+      .then((res) => {
+        console.log(res);
+        // console.log(res.data);
+      })
+  };
+
   // turn on summarizer
   const submit = (attempt = 1) => {
     setLoading('start');
 
-    const data = { url: currentUrl };
-    axios.post('https://skimgpt-api.onrender.com/api/summarizer', data, { timeout: 200000 })
+    // const data = { url: currentUrl };
+
+    axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      data: {
+        url: currentUrl,
+      }
+    })
       .then((res) => {
-        setLoading('done');
-        setResponse(res);
+        callGet();
       })
-      .catch((error) => {
-        if (attempt < maxAttempts) {
-          submit(attempt + 1);
-        } else {
-          setLoading('error');
-        }
-      });
+
+    // callGet();
+
+    // axios.post('https://skimgpt-api.onrender.com/api/summarizers', data)
+    //   .then((res) => {
+    //     setLoading('done');
+    //     setResponse(res);
+    //   })
+    //   .catch((error) => {
+    //     if (attempt < maxAttempts) {
+    //       submit(attempt + 1);
+    //     } else {
+    //       setLoading('error');
+    //     }
+    //   });
   };
 
   // display content
