@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import SideBar from './components/sidebar';
 
 let done = false;
@@ -25,5 +25,6 @@ done = true;
 if (done) {
   const sidebar = document.createElement('div');
   document.body.appendChild(sidebar);
-  ReactDOM.render(<SideBar />, sidebar);
+  const root = createRoot(sidebar);
+  root.render(<SideBar />);
 }
