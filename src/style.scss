@@ -184,3 +184,25 @@ body, html {
 	font-size: 14px;
 	line-height: 1.8;
 }
+
+.reader-view {
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+  overflow-y: scroll;
+  padding: 20px;
+  flex: 1;
+}
+
+.content-wrapper {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.content {
+	font-size: 18px;
+  line-height: 1.5;
+}

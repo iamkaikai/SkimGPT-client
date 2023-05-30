@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SplitPane, { Pane } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import Tools from './tools';
+import ReaderView from './readerview';
 
 function App(props) {
   const [sizes, setSizes] = useState(['auto', '500px']);
@@ -27,9 +28,9 @@ function App(props) {
         sizes={sizes}
         onChange={setSizes}
       >
-        <Pane minSize={100}>
+        <Pane minSize={500}>
           <div className="left-panel">
-            <h2>col 1</h2>
+            <ReaderView />
           </div>
         </Pane>
         <Pane minSize={500}>
