@@ -20,6 +20,7 @@ SkimGPT is a Chrome extension built to help the users efficiently digest online 
 ## Setup
 - npm install
 - npm run dev
+- make sure you update vite to the latest version
 
 
 ## Deployment
