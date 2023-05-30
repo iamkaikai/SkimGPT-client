@@ -4,13 +4,16 @@ import React, { useState, useEffect, useRef } from 'react';
 // import SplitPane, { Pane } from 'split-pane-react';
 // import 'split-pane-react/esm/themes/default.css';
 import CloseIcon from '@mui/icons-material/Close';
-import Tools from './tools';
 import { current } from '@reduxjs/toolkit';
+import { event } from 'jquery';
+import Tools from './tools';
 
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
   const [open, setOpen] = useState(true);
+  const [parsedHtml, setParsedHtml] = useState(null);
+
   const currentUrl = window.location.href;
   const maxAttempts = 3;
   const sidebarRef = useRef();
@@ -27,6 +30,14 @@ function Sidebar(props) {
     document.addEventListener('mousedown', handler);
   });
 
+  useEffect(() => {
+    console.log(parsedHtml);
+    if (parsedHtml) {
+      // props.addHtml(parsedHtml);
+      console.log('sent back to index.jsx');
+    }
+  }, [parsedHtml]);
+
   // closing button
   const handleClose = () => {
     setOpen(!open);
@@ -36,19 +47,18 @@ function Sidebar(props) {
 
   console.log(currentUrl);
 
-  let encodedURL = encodeURIComponent(currentUrl);
-
+  const encodedURL = encodeURIComponent(currentUrl);
   // get request
   const callGet = () => {
     axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
       params: {
         url: encodedURL,
-      }
+      },
     })
       .then((res) => {
-        console.log(res);
-        // console.log(res.data);
-      })
+        console.log(res); // this is entire summarizer btw
+        setParsedHtml(res.data.general.result_html);
+      });
   };
 
   // turn on summarizer
@@ -60,11 +70,11 @@ function Sidebar(props) {
     axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
       data: {
         url: currentUrl,
-      }
+      },
     })
       .then((res) => {
         callGet();
-      })
+      });
 
     // callGet();
 
