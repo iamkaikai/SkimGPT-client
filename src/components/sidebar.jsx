@@ -48,8 +48,8 @@ function Sidebar(props) {
     );
   } else if (loading === 'done') {
     // You can also render <Tools /> component here if needed
-    content = <Tools />;
-    // content = <p>{response?.data?.general?.overview}</p>;
+    // content = <Tools />;
+    content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
