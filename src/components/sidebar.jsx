@@ -66,12 +66,12 @@ function Sidebar(props) {
 
   return (
     <div className="app-container">
-      <h1 className="header">
+      <div className="header">
         <div>
           Skim<span>GPT</span>
         </div>
         <CloseIcon id="closeicon" />
-      </h1>
+      </div>
       <div className="sidebar">
         {content}
       </div>
