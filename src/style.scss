@@ -278,3 +278,7 @@ body, html {
 	font-size: 14px;
 	line-height: 1.8;
 }
+
+.toggle.react-toggle--checked .react-toggle-track {
+	background-color: rgb(102, 141, 247);
+}
