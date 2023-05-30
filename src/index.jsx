@@ -1,21 +1,30 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import './style.scss';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { createRoot } from 'react-dom/client';
+import SideBar from './components/sidebar';
 
-import rootReducer from './reducers';
+let done = false;
 
-import App from './components/app';
+// Get a reference to the body element
+const body = document.getElementsByTagName('body')[0];
 
-// this creates the store with the reducers
-const store = configureStore({
-  reducer: rootReducer,
-});
+// Create a new container div
+const mainContainer = document.createElement('div');
+mainContainer.className = 'main-container';
+mainContainer.style.width = '75vw';
 
-const root = createRoot(document.getElementById('main'));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-);
+// Move all the existing content into the container
+while (body.firstChild) {
+  mainContainer.appendChild(body.firstChild);
+}
+
+// Append the container to the body
+body.appendChild(mainContainer);
+done = true;
+
+if (done) {
+  const sidebar = document.createElement('div');
+  document.body.appendChild(sidebar);
+  const root = createRoot(sidebar);
+  root.render(<SideBar />);
+}

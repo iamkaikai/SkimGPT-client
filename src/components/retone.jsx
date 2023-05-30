@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from './dropdown';
 
 function Retone(props) {
@@ -16,12 +16,13 @@ function Retone(props) {
   //   overview: '',
   //   content: '',
   // });
+  const [selected, setSelected] = useState('');
 
   return (
     <div>
       <div className="dropdown">
         <div className="dropdown-label">Rewrite Tone</div>
-        <Dropdown />
+        <Dropdown selected={selected} setSelected={setSelected} />
       </div>
       <div id="title">
         CS 10 | Problem solving

@@ -41,7 +41,7 @@ TODO: how to get the project dev environment up and running, npm install etc
 
 ## Deployment
 
-- go to [Chrome Extensions page](chrome://extensions/)
+- go to Chrome Extensions page(chrome://extensions/)
 - In developer mode, click "load unpacked"
 - select the dist file, which has manifest.json file
 
@@ -55,7 +55,7 @@ TODO: how to get the project dev environment up and running, npm install etc
 - Pedro Campos
 
 ## Helpful Links
-- [Figma file](https://www.figma.com/file/bDGGy0l1fZnR99euhXYUt4/CS52?type=design&node-id=123-515&t=wMqvLj19qurAnJrV-0)
+- [Figma file](https://www.figma.com/file/D2RiAV9YWDM20AmD7uoDOv/Mockups?type=design&node-id=3%3A2&t=VXWciuczTsUaGeep-1)
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
 
 ## Acknowledgments
