@@ -5,7 +5,6 @@ import React, { useState, useEffect, useRef } from 'react';
 // import 'split-pane-react/esm/themes/default.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { current } from '@reduxjs/toolkit';
-import { event } from 'jquery';
 import Tools from './tools';
 
 function Sidebar(props) {
@@ -24,7 +23,7 @@ function Sidebar(props) {
   useEffect(() => {
     const handler = (e) => {
       if (!sidebarRef.current.contains(e.target)) {
-        setOpen(false);
+        // setOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
@@ -43,11 +42,16 @@ function Sidebar(props) {
     setOpen(!open);
   };
 
+<<<<<<< Updated upstream
   console.log('inside sidebar');
 
   console.log(currentUrl);
 
   const encodedURL = encodeURIComponent(currentUrl);
+=======
+  const encodedURL = encodeURIComponent(currentUrl);
+
+>>>>>>> Stashed changes
   // get request
   const callGet = () => {
     axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
@@ -56,17 +60,18 @@ function Sidebar(props) {
       },
     })
       .then((res) => {
+<<<<<<< Updated upstream
         console.log(res); // this is entire summarizer btw
         setParsedHtml(res.data.general.result_html);
+=======
+        console.log(res.data);
+>>>>>>> Stashed changes
       });
   };
 
   // turn on summarizer
   const submit = (attempt = 1) => {
     setLoading('start');
-
-    // const data = { url: currentUrl };
-
     axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
       data: {
         url: currentUrl,
@@ -75,6 +80,7 @@ function Sidebar(props) {
       .then((res) => {
         callGet();
       });
+<<<<<<< Updated upstream
 
     // callGet();
 
@@ -90,6 +96,8 @@ function Sidebar(props) {
     //       setLoading('error');
     //     }
     //   });
+=======
+>>>>>>> Stashed changes
   };
 
   // display content
