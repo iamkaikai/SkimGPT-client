@@ -40,7 +40,9 @@ function Sidebar(props) {
   const submit = (attempt = 1) => {
     setLoading('start');
     axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
-      url: currentUrl,
+      data: {
+        url: currentUrl,
+      },
     })
       .then((res) => {
         callGet();
