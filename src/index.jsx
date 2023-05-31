@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import CloseIcon from '@mui/icons-material/Close';
 import SideBar from './components/sidebar';
 import Reader from './components/reader';
 import './style.scss';
@@ -7,21 +8,32 @@ import './style.scss';
 // App component
 function App() {
   const [html, setHtml] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const addHtml = (input) => {
     setHtml(input);
+  };
+
+  // closing button
+  const handleClose = (event) => {
+    setOpen(true);
+    if (open) {
+      const all = document.getElementsByClassName('all')[0];
+      all.style.display = 'none';
+    }
   };
 
   useEffect(() => {
     if (html) {
       setHtml(html);
     }
-  }, [html]);
+  }, [html, open]);
 
   return (
     <div className="all">
-      <SideBar className="sidebar" addHtml={addHtml} />
-      <Reader className="reader" html={html} />
+      <CloseIcon id="closeicon" onClick={handleClose} />
+      <SideBar className="app-container" addHtml={addHtml} />
+      <Reader className="reader-container" html={html} />
     </div>
   );
 }

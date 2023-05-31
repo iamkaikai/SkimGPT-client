@@ -5,6 +5,7 @@ export default function reader(props) {
   const [mode, setMode] = useState(false);
   const modeChange = (event) => {
     setMode(event.target.checked);
+    console.log(mode);
   };
 
   return (
