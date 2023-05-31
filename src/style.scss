@@ -6,6 +6,10 @@ body, html {
 	background: #E9E9E9;
 }
 
+title {
+	display: block;
+}
+
 :root {
 	text-size-adjust: 100%;
 }
@@ -88,6 +92,7 @@ body, html {
 		display: flex;
 		justify-content: center;
 		padding: 1em;
+		overflow: scroll;
 
 		h1{
 			margin: 0;
@@ -142,6 +147,24 @@ body, html {
 				font-size: 11px;
 			}
 		}
+
+		.content {
+			padding: 12px;
+
+			.summary-h3{
+				font-size: 1.5em;
+				font-weight: 500;
+			}
+			p{
+				color: #333;
+			}
+			#section-container{
+				border: solid 1px #EEEEEE;
+				border-radius: 12px;
+				padding: 0.25em 1em;
+				margin-bottom: 12px;
+			}
+		}
 	}
 }
 
@@ -149,6 +172,10 @@ body, html {
 	border-bottom: solid;
 	border-color: #EEEEEE;
 	border-width: 1px;
+	button{
+		font-size: 13px;
+		padding-left: 0;
+	}
 }
 
 .tab {
@@ -173,10 +200,6 @@ body, html {
 	}
 }
 
-.content {
-	padding-left: 20px;
-	padding-right: 20px;
-}
 
 #title {
 	font-weight: 600;
@@ -213,7 +236,7 @@ body, html {
 .icon-btn-container {
 	display: flex;
 	justify-content: right;
-	margin-top: 20px;
+	margin-bottom: 8px;
 }
 
 .icon-btn {
