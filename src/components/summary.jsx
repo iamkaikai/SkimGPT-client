@@ -6,21 +6,6 @@ import { fetchSummary } from '../actions';
 function Summary(props) {
   const dispatch = useDispatch();
   const all = useSelector((state) => (state.summary.all));
-  // const [summary, setSummary] = useState({
-  //   title: '',
-  //   num_sections: '',
-  //   overview: '',
-  //   result_html: '',
-  // });
-
-  // const [section, setSection] = useState({
-  //   id: '',
-  //   length: '',
-  //   title: '',
-  //   overview: '',
-  //   content: '',
-  // });
-  // const currentUrl = window.location.href;
 
   dispatch(fetchSummary());
 

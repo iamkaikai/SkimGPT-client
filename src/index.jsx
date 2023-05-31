@@ -1,17 +1,34 @@
-import React from 'react';
-import './style.scss';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import SideBar from './components/sidebar';
-import rootReducer from './reducers';
+import Reader from './components/reader';
+import './style.scss';
 
-let done = false;
+// App component
+function App() {
+  const [html, setHtml] = useState(null);
+
+  const addHtml = (input) => {
+    setHtml(input);
+  };
+
+  useEffect(() => {
+    if (html) {
+      setHtml(html);
+    }
+  }, [html]);
+
+  return (
+    <div className="all">
+      <SideBar className="sidebar" addHtml={addHtml} />
+      <Reader className="reader" html={html} />
+    </div>
+  );
+}
 
 // Get a reference to the body element
-const body = document.getElementsByTagName('body')[0];
-
 // Create a new container div
+const body = document.getElementsByTagName('body')[0];
 const mainContainer = document.createElement('div');
 mainContainer.className = 'main-container';
 mainContainer.style.width = '75vw';
@@ -21,20 +38,7 @@ while (body.firstChild) {
   mainContainer.appendChild(body.firstChild);
 }
 
-// Append the container to the body
-body.appendChild(mainContainer);
-done = true;
+ReactDOM.render(<App />, body);
 
-if (done) {
-  const sidebar = document.createElement('div');
-  document.body.appendChild(sidebar);
-  const root = createRoot(sidebar);
-  const store = configureStore({
-    reducer: rootReducer,
-  });
-  root.render(
-    <Provider store={store}>
-      <SideBar />
-    </Provider>,
-  );
-}
+const all = document.getElementsByClassName('reader-content')[0];
+all.appendChild(mainContainer);

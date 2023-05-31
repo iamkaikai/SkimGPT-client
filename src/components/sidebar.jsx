@@ -1,41 +1,72 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-// import SplitPane, { Pane } from 'split-pane-react';
-// import 'split-pane-react/esm/themes/default.css';
+import React, { useState, useEffect, useRef } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import { ClassSharp } from '@mui/icons-material';
 import Tools from './tools';
 
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
+  const [open, setOpen] = useState(true);
+  const [parsedHtml, setParsedHtml] = useState(null);
+
   const currentUrl = window.location.href;
   const maxAttempts = 3;
+  const sidebarRef = useRef();
 
+  // closing the extension when clicking outside
+  // source: https://www.youtube.com/watch?v=HfZ7pdhS43s
+  useEffect(() => {
+    const handler = (e) => {
+      if (!sidebarRef.current.contains(e.target)) {
+        // setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+  });
+
+  useEffect(() => {
+    console.log(parsedHtml);
+    if (parsedHtml) {
+      props.addHtml(parsedHtml);
+    }
+  }, [parsedHtml]);
+
+  // closing button
+  const handleClose = () => {
+    setOpen(!open);
+  };
+
+  const encodedURL = encodeURIComponent(currentUrl);
+  // get request
+  const callGet = () => {
+    console.log('get method triggered');
+    axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      params: {
+        url: encodedURL,
+      },
+    }).then((res) => {
+      console.log(res.data); // this is entire summarizer btw
+      setParsedHtml(res.data.general.result_html);
+      props.addHtml(res.data);
+    });
+  };
+
+  // turn on summarizer
   const submit = (attempt = 1) => {
-    console.log(currentUrl);
     setLoading('start');
-
-    console.log(currentUrl);
-    console.log('loading summarizer...');
-    const data = { url: currentUrl };
-    axios.post('https://skimgpt-api.onrender.com/api/summarizers', data)
+    axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      data: {
+        url: currentUrl,
+      },
+    })
       .then((res) => {
-        console.log(res);
-        setLoading('done');
-        setResponse(res);
-      })
-      .catch((error) => {
-        console.error(error);
-        if (attempt < maxAttempts) {
-          console.log(`Attempt ${attempt} failed. Retrying...`);
-          submit(attempt + 1);
-        } else {
-          setLoading('error');
-        }
+        callGet();
       });
   };
 
+  // display content
   let content = null;
 
   if (loading === 'null') {
@@ -53,7 +84,6 @@ function Sidebar(props) {
     // const numSections = response2.num_sections;
     // console.log(numSections);
     content = <Tools />;
-    // content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
@@ -69,13 +99,13 @@ function Sidebar(props) {
   }
 
   return (
-    <div className="app-container">
-      <h1 className="header">
+    <div className={`app-container${open ? '-active' : '-inactive'}`} ref={sidebarRef}>
+      <div className="header">
         <div>
           Skim<span>GPT</span>
         </div>
-        <CloseIcon id="closeicon" />
-      </h1>
+        <CloseIcon id="closeicon" onClick={handleClose} open={open} />
+      </div>
       <div className="sidebar">
         {content}
       </div>
