@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
-import './style.scss';
-import { createRoot } from 'react-dom/client';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import SideBar from './components/sidebar';
 import Reader from './components/reader';
+import './style.scss';
 
-const [html, setHtml] = useState(null);
+// App component
+function App() {
+  const [html, setHtml] = useState(null);
 
-const addHtml = (input) => {
-  setHtml(input);
-};
+  const addHtml = (input) => {
+    setHtml(input);
+  };
+
+  useEffect(() => {
+    if (html) {
+      setHtml(html);
+    }
+  }, [html]);
+
+  return (
+    <div className="all">
+      <SideBar className="sidebar" addHtml={addHtml} />
+      <Reader className="reader" html={html} />
+    </div>
+  );
+}
 
 // Get a reference to the body element
 // Create a new container div
@@ -22,18 +38,7 @@ while (body.firstChild) {
   mainContainer.appendChild(body.firstChild);
 }
 
-const sidebar = document.createElement('div');
-const reader = document.createElement('div');
-sidebar.className = 'sidebar';
-reader.className = 'reader';
+ReactDOM.render(<App />, body);
 
-document.body.appendChild(sidebar);
-document.body.appendChild(reader);
-
-const comp1 = createRoot(reader);
-const comp2 = createRoot(sidebar);
-
-comp1.render(<Reader html={html} />);
-comp2.render(<SideBar addHtml={addHtml} />);
-
-body.appendChild(mainContainer);
+const all = document.getElementsByClassName('reader-container')[0];
+all.appendChild(mainContainer);

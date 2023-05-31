@@ -3,6 +3,7 @@ body, html {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	background: #E9E9E9;
 }
 
 :root {
@@ -24,7 +25,7 @@ body, html {
 	background: #fff;
 	position: fixed;
     right: 0;
-	border-left: 3px solid #cccccc86;
+	border-left: 3px solid #cccccc;
 	display: flex;
 	flex-direction: column;
 	margin: 0em 0em 1em 1em;
@@ -281,7 +282,7 @@ body, html {
 	line-height: 1.8;
 }
 
-.reader{
+.reader-container{
 	width: 72vw;
 	.reader-nav{
 		background-color: white;

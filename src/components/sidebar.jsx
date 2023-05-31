@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
-// import SplitPane, { Pane } from 'split-pane-react';
-// import 'split-pane-react/esm/themes/default.css';
 import CloseIcon from '@mui/icons-material/Close';
-import { current } from '@reduxjs/toolkit';
+import { ClassSharp } from '@mui/icons-material';
 import Tools from './tools';
 
 function Sidebar(props) {
@@ -16,7 +14,6 @@ function Sidebar(props) {
   const currentUrl = window.location.href;
   const maxAttempts = 3;
   const sidebarRef = useRef();
-  console.log(open);
 
   // closing the extension when clicking outside
   // source: https://www.youtube.com/watch?v=HfZ7pdhS43s
@@ -33,7 +30,6 @@ function Sidebar(props) {
     console.log(parsedHtml);
     if (parsedHtml) {
       props.addHtml(parsedHtml);
-      console.log('sent back to index.jsx');
     }
   }, [parsedHtml]);
 
@@ -42,22 +38,19 @@ function Sidebar(props) {
     setOpen(!open);
   };
 
-  console.log('inside sidebar');
-
-  console.log(currentUrl);
-
   const encodedURL = encodeURIComponent(currentUrl);
   // get request
   const callGet = () => {
+    console.log('get method triggered');
     axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
       params: {
         url: encodedURL,
       },
-    })
-      .then((res) => {
-        console.log(res); // this is entire summarizer btw
-        setParsedHtml(res.data.general.result_html);
-      });
+    }).then((res) => {
+      console.log(res.data); // this is entire summarizer btw
+      setParsedHtml(res.data.general.result_html);
+      props.addHtml(res.data);
+    });
   };
 
   // turn on summarizer
@@ -71,21 +64,6 @@ function Sidebar(props) {
       .then((res) => {
         callGet();
       });
-
-    // callGet();
-
-    // axios.post('https://skimgpt-api.onrender.com/api/summarizers', data)
-    //   .then((res) => {
-    //     setLoading('done');
-    //     setResponse(res);
-    //   })
-    //   .catch((error) => {
-    //     if (attempt < maxAttempts) {
-    //       submit(attempt + 1);
-    //     } else {
-    //       setLoading('error');
-    //     }
-    //   });
   };
 
   // display content
@@ -102,7 +80,6 @@ function Sidebar(props) {
   } else if (loading === 'done') {
     // You can also render <Tools /> component here if needed
     content = <Tools />;
-    // content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
