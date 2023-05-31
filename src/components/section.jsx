@@ -6,7 +6,7 @@ function section(props) {
   console.log(props.section);
   const { title } = props.section;
   const { overview } = props.section;
-  const { content } = props.section;
+  // const { content } = props.section;
 
   const md = new Remarkable();
 
@@ -16,7 +16,7 @@ function section(props) {
     <div id="section-container">
       <p dangerouslySetInnerHTML={{ __html: md.render(title) }} />
       <p dangerouslySetInnerHTML={{ __html: md.render(overview) }} />
-      <p dangerouslySetInnerHTML={{ __html: md.render(content) }} />
+      {/* <p dangerouslySetInnerHTML={{ __html: md.render(content) }} /> */}
     </div>
   );
 }
