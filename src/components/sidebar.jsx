@@ -2,23 +2,22 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { ClassSharp } from '@mui/icons-material';
 import Tools from './tools';
 
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
   const [parsedHtml, setParsedHtml] = useState(null);
-
+  const [generalInfo, setGeneralInfo] = useState(null);
+  const [sections, setSections] = useState(null);
   const currentUrl = window.location.href;
   const maxAttempts = 3;
 
   useEffect(() => {
-    console.log(parsedHtml);
     if (parsedHtml) {
       props.addHtml(parsedHtml);
     }
-  }, [parsedHtml]);
+  }, [parsedHtml, generalInfo, sections]);
 
   const encodedURL = encodeURIComponent(currentUrl);
   // get request
@@ -29,9 +28,11 @@ function Sidebar(props) {
         url: encodedURL,
       },
     }).then((res) => {
-      console.log(res.data); // this is entire summarizer btw
       setParsedHtml(res.data.general.result_html);
-      props.addHtml(res.data);
+      setGeneralInfo(res.data.general);
+      setSections(res.data.sections);
+      // props.addHtml(res.data.general.result_html);
+      setLoading('done');
     });
   };
 
@@ -60,8 +61,9 @@ function Sidebar(props) {
       </div>
     );
   } else if (loading === 'done') {
-    // You can also render <Tools /> component here if needed
-    content = <Tools />;
+    console.log('enter done');
+    console.log(generalInfo);
+    content = <Tools generalInfo={generalInfo} sections={sections} />;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
@@ -69,11 +71,8 @@ function Sidebar(props) {
       </div>
     );
   } else {
-    content = (
-      <div className="loadingWrapper">
-        <p>loading...</p>
-      </div>
-    );
+    console.log('enter else');
+    // content = <Tools generalInfo={generalInfo} />;
   }
 
   return (
