@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Clipboard from 'react-clipboard.js';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -6,11 +6,21 @@ import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import Summary from './summary';
 import Retone from './retone';
-// import Section from './section';
+import Section from './section';
 
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
+  const [sections, setSections] = useState(null);
   const printRef = React.useRef();
+
+  useEffect(() => {
+    if (props.sections) {
+      setSections(props.sections);
+      console.log(sections);
+    }
+  }, [props.sections]);
+
+  console.log(props.sections);
 
   // code from https://www.robinwieruch.de/react-component-to-pdf/
   const handleDownloadPdf = async () => {
@@ -23,7 +33,6 @@ function Tools(props) {
     const imgProperties = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('print.pdf');
   };
@@ -47,7 +56,7 @@ function Tools(props) {
               <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Retone</button>
             </div>
             <Summary generalInfo={props.generalInfo} />
-            {/* <Section generalInfo={props.generalInfo} /> */}
+            {sections && sections.map((section, idx) => <Section section={section} index={idx} />)}
           </div>
         </div>
 

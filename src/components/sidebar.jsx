@@ -2,7 +2,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { ClassSharp } from '@mui/icons-material';
 import Tools from './tools';
 
 function Sidebar(props) {
@@ -10,8 +9,8 @@ function Sidebar(props) {
   const [response, setResponse] = useState(null);
   const [open, setOpen] = useState(true);
   const [parsedHtml, setParsedHtml] = useState(null);
-  const [generalInfo, setGeneralInfo] = useState(null); // random non-zero number to start (pass down to summary)
-
+  const [generalInfo, setGeneralInfo] = useState(null);
+  const [sections, setSections] = useState(null);
   const currentUrl = window.location.href;
   const maxAttempts = 3;
   const sidebarRef = useRef();
@@ -31,7 +30,7 @@ function Sidebar(props) {
     if (parsedHtml) {
       props.addHtml(parsedHtml);
     }
-  }, [parsedHtml, generalInfo]);
+  }, [parsedHtml, generalInfo, sections]);
 
   // closing button
   const handleClose = () => {
@@ -49,6 +48,7 @@ function Sidebar(props) {
     }).then((res) => {
       setParsedHtml(res.data.general.result_html);
       setGeneralInfo(res.data.general);
+      setSections(res.data.sections);
       // props.addHtml(res.data.general.result_html);
       setLoading('done');
     });
@@ -81,7 +81,7 @@ function Sidebar(props) {
   } else if (loading === 'done') {
     console.log('enter done');
     console.log(generalInfo);
-    content = <Tools generalInfo={generalInfo} />;
+    content = <Tools generalInfo={generalInfo} sections={sections} />;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
