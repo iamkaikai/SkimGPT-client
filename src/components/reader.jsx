@@ -22,10 +22,12 @@ export default function reader(props) {
           onChange={modeChange}
         />
       </div>
-      <div className={`reader-content ${mode ? 'hidden' : ''}`} />
+      <div
+        className={`reader-content ${mode ? 'hidden' : ''}`}
+      />
       {mode && (
         <div className={`content-wrapper ${mode ? 'show' : ''}`}>
-          <div className="content">CS10</div>
+          <div className="content" dangerouslySetInnerHTML={{ __html: props.html }} />
         </div>
       )}
     </div>
