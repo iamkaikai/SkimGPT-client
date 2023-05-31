@@ -19,7 +19,7 @@ function Sidebar(props) {
     console.log(currentUrl);
     console.log('loading summarizer...');
     const data = { url: currentUrl };
-    axios.post('https://skimgpt-api.onrender.com/api/summarizer', data, { timeout: 200000 })
+    axios.post('https://skimgpt-api.onrender.com/api/summarizers', data)
       .then((res) => {
         console.log(res);
         setLoading('done');
@@ -48,6 +48,10 @@ function Sidebar(props) {
     );
   } else if (loading === 'done') {
     // You can also render <Tools /> component here if needed
+    // const data = { url: currentUrl };
+    // const response2 = await axios.get('https://skimgpt-api.onrender.com/api/summarizers', data);
+    // const numSections = response2.num_sections;
+    // console.log(numSections);
     content = <Tools />;
     // content = <p>{response?.data?.general?.overview}</p>;
   } else if (loading === 'error') {
