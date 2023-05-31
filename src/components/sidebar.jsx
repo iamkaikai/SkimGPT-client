@@ -10,6 +10,7 @@ function Sidebar(props) {
   const [response, setResponse] = useState(null);
   const [open, setOpen] = useState(true);
   const [parsedHtml, setParsedHtml] = useState(null);
+  const [generalInfo, setGeneralInfo] = useState(null); // random non-zero number to start (pass down to summary)
 
   const currentUrl = window.location.href;
   const maxAttempts = 3;
@@ -49,7 +50,8 @@ function Sidebar(props) {
     }).then((res) => {
       console.log(res.data); // this is entire summarizer btw
       setParsedHtml(res.data.general.result_html);
-      props.addHtml(res.data);
+      setGeneralInfo(res.data.general);
+      props.addHtml(res.data.general.result_html);
     });
   };
 
@@ -83,7 +85,7 @@ function Sidebar(props) {
     // const response2 = await axios.get('https://skimgpt-api.onrender.com/api/summarizers', data);
     // const numSections = response2.num_sections;
     // console.log(numSections);
-    content = <Tools />;
+    content = <Tools generalInfo={generalInfo} />;
   } else if (loading === 'error') {
     content = (
       <div className="loadingWrapper">
@@ -91,11 +93,12 @@ function Sidebar(props) {
       </div>
     );
   } else {
-    content = (
-      <div className="loadingWrapper">
-        <p>loading...</p>
-      </div>
-    );
+    content = <Tools generalInfo={generalInfo} />;
+    // (
+    //   <div className="loadingWrapper">
+    //     <p>loading...</p>
+    //   </div>
+    // );
   }
 
   return (

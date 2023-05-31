@@ -41,7 +41,7 @@ function Tools(props) {
             </button>
           </div>
           <div ref={printRef} id="summary">
-            <Summary />
+            <Summary generalInfo={props.generalInfo} />
           </div>
         </div>
 
