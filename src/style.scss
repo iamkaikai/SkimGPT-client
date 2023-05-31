@@ -9,7 +9,9 @@ body, html {
 :root {
 	text-size-adjust: 100%;
 }
-
+.hidden{
+	display: none;
+}
 .app-container-inactive {
 	display: none;
 	transition: 0.2s;

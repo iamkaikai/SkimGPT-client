@@ -17,6 +17,7 @@ export default function reader(props) {
           onChange={modeChange}
         />
       </div>
+      <div className={`reader-content ${mode ? 'hidden' : ''}`} />
     </div>
   );
 }

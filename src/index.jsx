@@ -40,5 +40,5 @@ while (body.firstChild) {
 
 ReactDOM.render(<App />, body);
 
-const all = document.getElementsByClassName('reader-container')[0];
+const all = document.getElementsByClassName('reader-content')[0];
 all.appendChild(mainContainer);
