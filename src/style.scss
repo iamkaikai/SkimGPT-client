@@ -9,15 +9,46 @@ body, html {
 :root {
 	text-size-adjust: 100%;
 }
+
+
 .hidden{
 	display: none;
 }
-.app-container-inactive {
-	display: none;
-	transition: 0.2s;
+
+#closeicon {
+	font-size: 20px;
+	position: absolute;
+	z-index: 3;
+	margin-top: 13px;
+	margin-left: 20px;
+
+	:hover {
+		cursor: pointer;
+		opacity: 50%;
+	}
 }
 
-.app-container-active{
+.reader-container {
+	position: relative;
+	z-index: 1
+}
+
+.closeicon {
+	font-size: 20px;
+	position: absolute;
+	z-index: 3;
+	margin-top: 13px;
+	margin-left: 20px;
+
+	:hover {
+		cursor: pointer;
+		opacity: 50%;
+	}
+}
+
+.app-container{
+	position: absolute;
+	z-index: 2;
 	visibility: visible;
 	transition: 0.2s;
 	width: 28vw;
@@ -49,15 +80,6 @@ body, html {
 		span {
 			font-weight: 600;
 			color: rgb(102, 141, 247);
-		}
-
-		#closeicon {
-			font-size: 20px;
-
-			:hover {
-				cursor: pointer;
-				opacity: 50%;
-			}
 		}
 	}
 

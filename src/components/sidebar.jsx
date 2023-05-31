@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { ClassSharp } from '@mui/icons-material';
 import Tools from './tools';
@@ -8,23 +8,10 @@ import Tools from './tools';
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
-  const [open, setOpen] = useState(true);
   const [parsedHtml, setParsedHtml] = useState(null);
 
   const currentUrl = window.location.href;
   const maxAttempts = 3;
-  const sidebarRef = useRef();
-
-  // closing the extension when clicking outside
-  // source: https://www.youtube.com/watch?v=HfZ7pdhS43s
-  useEffect(() => {
-    const handler = (e) => {
-      if (!sidebarRef.current.contains(e.target)) {
-        // setOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-  });
 
   useEffect(() => {
     console.log(parsedHtml);
@@ -32,11 +19,6 @@ function Sidebar(props) {
       props.addHtml(parsedHtml);
     }
   }, [parsedHtml]);
-
-  // closing button
-  const handleClose = () => {
-    setOpen(!open);
-  };
 
   const encodedURL = encodeURIComponent(currentUrl);
   // get request
@@ -95,12 +77,11 @@ function Sidebar(props) {
   }
 
   return (
-    <div className={`app-container${open ? '-active' : '-inactive'}`} ref={sidebarRef}>
+    <div className="app-container">
       <div className="header">
         <div>
           Skim<span>GPT</span>
         </div>
-        <CloseIcon id="closeicon" onClick={handleClose} open={open} />
       </div>
       <div className="sidebar">
         {content}
