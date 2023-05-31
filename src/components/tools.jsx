@@ -6,6 +6,7 @@ import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import Summary from './summary';
 import Retone from './retone';
+// import Section from './section';
 
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
@@ -32,16 +33,21 @@ function Tools(props) {
     if (tab === 'summary') {
       return (
         <div className="content">
-          <div className="icon-btn-container">
-            <Clipboard data-clipboard-target="#summary" className="icon-btn" onSuccess={() => { console.log('success'); }}>
-              <ContentCopyOutlinedIcon />
-            </Clipboard>
-            <button type="button" className="icon-btn" onClick={handleDownloadPdf}>
-              <FileDownloadOutlinedIcon />
-            </button>
-          </div>
           <div ref={printRef} id="summary">
+            <div className="icon-btn-container">
+              <Clipboard data-clipboard-target="#summary" className="icon-btn" onSuccess={() => { console.log('success'); }}>
+                <ContentCopyOutlinedIcon />
+              </Clipboard>
+              <button type="button" className="icon-btn" onClick={handleDownloadPdf}>
+                <FileDownloadOutlinedIcon />
+              </button>
+            </div>
+            <div className="tabs-container">
+              <button type="button" className="tab" onClick={() => { switchTab('summary'); }}>Summary</button>
+              <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Retone</button>
+            </div>
             <Summary generalInfo={props.generalInfo} />
+            {/* <Section generalInfo={props.generalInfo} /> */}
           </div>
         </div>
 
@@ -57,10 +63,6 @@ function Tools(props) {
 
   return (
     <div>
-      <div className="tabs-container">
-        <button type="button" className="tab" onClick={() => { switchTab('summary'); }}>Summary</button>
-        <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Retone</button>
-      </div>
       {tabs()}
     </div>
 

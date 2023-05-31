@@ -124,6 +124,18 @@ title {
 				font-size: 11px;
 			}
 		}
+
+		.content {
+			padding: 12px;
+
+			.summary-h3{
+				font-size: 1.5em;
+				font-weight: 500;
+			}
+			p{
+				color: #333;
+			}
+		}
 	}
 }
 
@@ -131,6 +143,10 @@ title {
 	border-bottom: solid;
 	border-color: #EEEEEE;
 	border-width: 1px;
+	button{
+		font-size: 13px;
+		padding-left: 0;
+	}
 }
 
 .tab {
@@ -155,10 +171,6 @@ title {
 	}
 }
 
-.content {
-	padding-left: 20px;
-	padding-right: 20px;
-}
 
 #title {
 	font-weight: 600;
@@ -195,7 +207,7 @@ title {
 .icon-btn-container {
 	display: flex;
 	justify-content: right;
-	margin-top: 20px;
+	margin-bottom: 8px;
 }
 
 .icon-btn {

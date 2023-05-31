@@ -28,11 +28,10 @@ function Sidebar(props) {
   });
 
   useEffect(() => {
-    console.log(parsedHtml);
     if (parsedHtml) {
       props.addHtml(parsedHtml);
     }
-  }, [parsedHtml]);
+  }, [parsedHtml, generalInfo]);
 
   // closing button
   const handleClose = () => {
@@ -48,10 +47,10 @@ function Sidebar(props) {
         url: encodedURL,
       },
     }).then((res) => {
-      console.log(res.data); // this is entire summarizer btw
       setParsedHtml(res.data.general.result_html);
       setGeneralInfo(res.data.general);
-      props.addHtml(res.data.general.result_html);
+      // props.addHtml(res.data.general.result_html);
+      setLoading('done');
     });
   };
 
@@ -80,11 +79,8 @@ function Sidebar(props) {
       </div>
     );
   } else if (loading === 'done') {
-    // You can also render <Tools /> component here if needed
-    // const data = { url: currentUrl };
-    // const response2 = await axios.get('https://skimgpt-api.onrender.com/api/summarizers', data);
-    // const numSections = response2.num_sections;
-    // console.log(numSections);
+    console.log('enter done');
+    console.log(generalInfo);
     content = <Tools generalInfo={generalInfo} />;
   } else if (loading === 'error') {
     content = (
@@ -93,12 +89,8 @@ function Sidebar(props) {
       </div>
     );
   } else {
-    content = <Tools generalInfo={generalInfo} />;
-    // (
-    //   <div className="loadingWrapper">
-    //     <p>loading...</p>
-    //   </div>
-    // );
+    console.log('enter else');
+    // content = <Tools generalInfo={generalInfo} />;
   }
 
   return (
