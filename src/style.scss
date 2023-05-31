@@ -20,7 +20,10 @@ body, html {
 
 #closeicon {
 	font-size: 20px;
+	position: absolute;
 	z-index: 3;
+	margin-top: 13px;
+	margin-left: 20px;
 
 	:hover {
 		cursor: pointer;
@@ -28,7 +31,13 @@ body, html {
 	}
 }
 
+.reader-container {
+	position: relative;
+	z-index: 1
+}
+
 .app-container{
+	position: relative;
 	z-index: 1;
 	visibility: visible;
 	transition: 0.2s;
