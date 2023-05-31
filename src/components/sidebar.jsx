@@ -9,11 +9,15 @@ function Sidebar(props) {
   const [response, setResponse] = useState(null);
   const [parsedHtml, setParsedHtml] = useState(null);
   const [generalInfo, setGeneralInfo] = useState(null);
+  const [numSections, setNumSections] = useState(9999);
   const [sections, setSections] = useState(null);
+  const [displaySections, setDisplaySections] = useState(null);
   const currentUrl = window.location.href;
   const maxAttempts = 3;
 
   useEffect(() => {
+    console.log('setting generalInfo:');
+    console.log(generalInfo);
     if (parsedHtml) {
       props.addHtml(parsedHtml);
     }
@@ -28,13 +32,46 @@ function Sidebar(props) {
         url: encodedURL,
       },
     }).then((res) => {
+      console.log(res.data);
       setParsedHtml(res.data.general.result_html);
       setGeneralInfo(res.data.general);
+      // const array = Array(res.data.general.num_sections).fill('<div>Loading<div>');
       setSections(res.data.sections);
-      // props.addHtml(res.data.general.result_html);
+      // setDisplaySections(array);
+      setNumSections(res.data.general.num_sections);
+      props.addHtml(res.data.general.result_html);
       setLoading('done');
     });
   };
+  const continuousCall = () => {
+    axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      params: {
+        url: encodedURL,
+      },
+    }).then((res) => {
+      console.log(`current sections: ${res.data.sections}`);
+      setSections(res.data.sections);
+    });
+  };
+  useEffect(() => {
+    const getSections = () => {
+      // while (sections.length < numSections) {
+      //   setTimeout(() => {
+      //     continuousCall();
+      //     console.log('done a cycle');
+      //   }, 2000);
+      // }
+      setTimeout(() => {
+        if (sections.length < numSections) {
+          continuousCall();
+          console.log('done a cycle');
+        }
+      }, 2000);
+
+      // cycle(); // Start the cycle
+    };
+    getSections();
+  }, [sections, numSections]);
 
   // turn on summarizer
   const submit = (attempt = 1) => {

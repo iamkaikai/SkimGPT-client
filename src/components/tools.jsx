@@ -11,6 +11,7 @@ import Section from './section';
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
   const [sections, setSections] = useState(null);
+
   const printRef = React.useRef();
 
   useEffect(() => {
