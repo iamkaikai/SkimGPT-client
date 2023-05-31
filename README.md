@@ -37,9 +37,11 @@ Our problem is broken down into two major areas:
 
 ## Deployment
 
+- git clone this repository
+- run 'npm run build' on project directory
 - go to Chrome Extensions page(chrome://extensions/)
 - In developer mode, click "load unpacked"
-- select the extension folder, within the project file. The extension folder should be  which has manifest.json file
+- select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build'
 
 
 ## Authors

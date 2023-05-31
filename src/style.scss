@@ -180,8 +180,8 @@ title {
 				padding: 0.25em 1em;
 				margin-bottom: 12px;
 
-				.subtitle {
-					font-size: 1.3rem;
+				.subtitle p {
+					font-size: 1.5rem;
 					line-height: 1.8rem;
 				}
 			}
@@ -371,9 +371,9 @@ title {
 	.content-wrapper {
 		div {
 		  background-color: white;
-		  width: 50%;
-		  height: 50%;
-		  margin: auto;
+		//   width: 50%;
+		//   height: 50%;
+		//   margin: auto;
 		}
 	}
 	&.mode-transition .content-wrapper {

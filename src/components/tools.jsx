@@ -11,7 +11,7 @@ import Section from './section';
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
   const [sections, setSections] = useState(null);
-
+  // homes.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
   const printRef = React.useRef();
 
   useEffect(() => {
@@ -38,6 +38,8 @@ function Tools(props) {
     pdf.save('print.pdf');
   };
 
+  props.sections.sort((a, b) => parseFloat(a.id) - parseFloat(b.id));
+
   // clipboard info from https://clipboardjs.com/ and https://www.npmjs.com/package/react-clipboard.js?activeTab=readme
   function tabs() {
     if (tab === 'summary') {
@@ -54,7 +56,8 @@ function Tools(props) {
             </div>
             <div className="tabs-container">
               <button type="button" className="tab" onClick={() => { switchTab('summary'); }}>Summary</button>
-              <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Retone</button>
+              {/* <button type="button" className="tab" onClick={() => { switchTab('tone'); }}>Retone</button> */}
+              <button type="button" className="tab">Retone</button>
             </div>
             <Summary generalInfo={props.generalInfo} />
             {sections && sections.map((section, idx) => <Section section={section} index={idx} />)}
