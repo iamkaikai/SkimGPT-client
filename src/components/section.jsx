@@ -10,8 +10,6 @@ function section(props) {
 
   const md = new Remarkable();
 
-  console.log('in section.jsx');
-
   return (
     <div id="section-container">
       <p dangerouslySetInnerHTML={{ __html: md.render(title) }} />
