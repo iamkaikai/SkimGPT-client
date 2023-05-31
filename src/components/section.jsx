@@ -3,7 +3,7 @@ import React from 'react';
 import { Remarkable } from 'remarkable';
 
 function section(props) {
-  console.log(props.section);
+  // console.log(props.section);
   const { title } = props.section;
   const { overview } = props.section;
   // const { content } = props.section;
@@ -12,7 +12,7 @@ function section(props) {
 
   return (
     <div id="section-container">
-      <p dangerouslySetInnerHTML={{ __html: md.render(title) }} />
+      <p className="subtitle" dangerouslySetInnerHTML={{ __html: md.render(title) }} />
       <p dangerouslySetInnerHTML={{ __html: md.render(overview) }} />
       {/* <p dangerouslySetInnerHTML={{ __html: md.render(content) }} /> */}
     </div>
