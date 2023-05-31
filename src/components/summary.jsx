@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from 'react';
 import React from 'react';
 
-function section(props) {
+function Summary(props) {
   console.log(props);
   const { title } = props.generalInfo;
   const { numSections } = props.generalInfo;
@@ -15,4 +15,4 @@ function section(props) {
     </div>
   );
 }
-export default section;
+export default Summary;
