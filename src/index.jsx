@@ -18,8 +18,13 @@ function App() {
   const handleClose = (event) => {
     setOpen(true);
     if (open) {
-      const all = document.getElementsByClassName('all')[0];
-      all.style.display = 'none';
+      const readernav = document.getElementsByClassName('reader-nav')[0];
+      const sidebar = document.getElementsByClassName('app-container')[0];
+      const icon = document.getElementsByClassName('closeicon')[0];
+
+      readernav.style.display = 'none';
+      sidebar.style.display = 'none';
+      icon.style.display = 'none';
     }
   };
 
@@ -31,7 +36,7 @@ function App() {
 
   return (
     <div className="all">
-      <CloseIcon id="closeicon" onClick={handleClose} />
+      <CloseIcon className="closeicon" onClick={handleClose} />
       <SideBar className="app-container" addHtml={addHtml} />
       <Reader className="reader-container" html={html} />
     </div>
