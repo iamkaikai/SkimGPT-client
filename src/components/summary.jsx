@@ -13,7 +13,7 @@ function section(props) {
       <div>
         <h3 className="summary-h3">{cleanedTitle}</h3>
         <p>{numSections}</p>
-        <p>{cleanedOverview}</p>
+        <p className="summary-overview">{cleanedOverview}</p>
       </div>
     );
   } else {
