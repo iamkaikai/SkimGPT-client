@@ -1,7 +1,6 @@
 import React from 'react';
 
 function section(props) {
-  console.log(props);
   if (props !== undefined) {
     const { title, numSections, overview } = props.generalInfo;
 

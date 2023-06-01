@@ -10,7 +10,6 @@ function Sidebar(props) {
   const [generalInfo, setGeneralInfo] = useState(null);
   const [sections, setSections] = useState(null);
   const currentUrl = window.location.href;
-  const maxAttempts = 3;
 
   useEffect(() => {
     if (parsedHtml) {
