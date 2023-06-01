@@ -1,18 +1,23 @@
-// import React, { useState, useEffect } from 'react';
 import React from 'react';
 
 function section(props) {
   console.log(props);
-  const { title } = props.generalInfo;
-  const { numSections } = props.generalInfo;
-  const { overview } = props.generalInfo;
+  if (props !== undefined) {
+    const { title, numSections, overview } = props.generalInfo;
 
-  return (
-    <div>
-      <h3 className="summary-h3">{title.replace(/<title>|<\/title>/g, '')}</h3>
-      <p>{numSections}</p>
-      <p>{overview.replace(/Title:/, '')}</p>
-    </div>
-  );
+    // Check if title and overview are not undefined before calling replace()
+    const cleanedTitle = title ? title.replace(/<title>|<\/title>/g, '') : '';
+    const cleanedOverview = overview ? overview.replace(/Title:/, '') : '';
+
+    return (
+      <div>
+        <h3 className="summary-h3">{cleanedTitle}</h3>
+        <p>{numSections}</p>
+        <p>{cleanedOverview}</p>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
 export default section;

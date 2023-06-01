@@ -21,7 +21,7 @@ function Tools(props) {
     }
   }, [props.sections]);
 
-  console.log(props.sections);
+  // console.log(props.sections);
 
   // code from https://www.robinwieruch.de/react-component-to-pdf/
   const handleDownloadPdf = async () => {

@@ -3,7 +3,6 @@ import React from 'react';
 import { Remarkable } from 'remarkable';
 
 function section(props) {
-  console.log(props.section);
   const { title } = props.section;
   const { overview } = props.section;
   // const { content } = props.section;

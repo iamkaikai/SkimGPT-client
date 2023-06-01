@@ -28,11 +28,12 @@ function Sidebar(props) {
         url: encodedURL,
       },
     }).then((res) => {
-      setParsedHtml(res.data.general.result_html);
-      setGeneralInfo(res.data.general);
-      setSections(res.data.sections);
-      // props.addHtml(res.data.general.result_html);
-      setLoading('done');
+      if (res !== null) {
+        setParsedHtml(res.data.general.result_html);
+        setGeneralInfo(res.data.general);
+        setSections(res.data.sections);
+        setLoading('done');
+      }
     });
   };
 
@@ -40,13 +41,12 @@ function Sidebar(props) {
   const submit = (attempt = 1) => {
     setLoading('start');
     axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
-      data: {
-        url: currentUrl,
-      },
-    })
-      .then((res) => {
-        callGet();
-      });
+      url: currentUrl,
+    }).then((res) => {
+      for (let i = 0; i < 100; i += 1) {
+        setTimeout(callGet, 2000 * i);
+      }
+    });
   };
 
   // display content
@@ -60,9 +60,8 @@ function Sidebar(props) {
         <button type="button" className="cta-btn" onClick={submit}>Turn on</button>
       </div>
     );
-  } else if (loading === 'done') {
+  } else if (loading === 'done' && generalInfo && sections) {
     console.log('enter done');
-    console.log(generalInfo);
     content = <Tools generalInfo={generalInfo} sections={sections} />;
   } else if (loading === 'error') {
     content = (
@@ -72,7 +71,11 @@ function Sidebar(props) {
     );
   } else {
     console.log('enter else');
-    // content = <Tools generalInfo={generalInfo} />;
+    content = (
+      <div className="loadingWrapper">
+        <p>loading...</p>
+      </div>
+    );
   }
 
   return (
