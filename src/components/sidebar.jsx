@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
 import Tools from './tools';
 
 function Sidebar(props) {
@@ -20,6 +19,7 @@ function Sidebar(props) {
   }, [parsedHtml, generalInfo, sections]);
 
   const encodedURL = encodeURIComponent(currentUrl);
+
   // get request
   const callGet = () => {
     console.log('get method triggered');

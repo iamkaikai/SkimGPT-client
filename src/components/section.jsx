@@ -9,11 +9,9 @@ function section(props) {
 
   const md = new Remarkable();
 
-  console.log('in section.jsx');
-
   return (
     <div id="section-container">
-      <p dangerouslySetInnerHTML={{ __html: md.render(title) }} />
+      <p className="subtitle" dangerouslySetInnerHTML={{ __html: md.render(title) }} />
       <p dangerouslySetInnerHTML={{ __html: md.render(overview) }} />
       {/* <p dangerouslySetInnerHTML={{ __html: md.render(content) }} /> */}
     </div>
