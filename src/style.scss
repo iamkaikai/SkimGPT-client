@@ -1,5 +1,5 @@
 body, html {
-	font-family: 'Inter', sans-serif;
+	font-family: -apple-system,"Roboto","Inter",sans-serif;
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -165,7 +165,7 @@ title {
 			.summary-h3{
 				font-size: 1.6em;
 				line-height: 1.3em;
-				font-weight: 600;
+				font-weight: 500;
 			}
 			.summary-overview{
 				color: #999;
@@ -178,13 +178,14 @@ title {
 			#section-container{
 				border: solid 1px #EEEEEE;
 				border-radius: 12px;
-				padding: 0.25em 1em;
+				padding: 1em 2em;
 				margin-bottom: 12px;
 
 				.subtitle p{
 					font-size: 1.2rem;
 					line-height: 1.5rem;
-					font-weight: 500;
+					font-weight: 600;
+					margin-bottom: 20px;
 				}
 			}
 		}

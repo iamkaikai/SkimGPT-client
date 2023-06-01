@@ -3,9 +3,9 @@ import React from 'react';
 import { Remarkable } from 'remarkable';
 
 function section(props) {
-  const { title } = props.section;
-  const { overview } = props.section;
-  // const { content } = props.section;
+  // eslint-disable-next-line prefer-const
+  let { title, overview } = props.section;
+  overview = overview ? overview.replace(/(Overview:|Highlights:)\s*/, '') : '';
 
   const md = new Remarkable();
 
