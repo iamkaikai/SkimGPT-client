@@ -42,13 +42,8 @@ function Sidebar(props) {
     axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
       url: currentUrl,
     }).then((res) => {
-      // Check if the information is already stored in the database
-      // If it isn't, attempt to retrieve the response by progressively reducing the wait time exponentially
-      // Maximun runtime: 136 sec
-      callGet();
-      let waitingTime = 0;
-      for (let i = 5; i >= 0.0001; i *= 0.9) {
-        setTimeout(callGet, waitingTime += Math.ceil(i));
+      for (let i = 0; i < 80; i += 1) {
+        setTimeout(callGet, 2000 * i);
       }
     });
   };
