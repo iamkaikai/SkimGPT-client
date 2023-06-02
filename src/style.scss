@@ -355,6 +355,9 @@ title {
 
 .reader-container{
 	width: 72vw;
+	p{
+		line-height: 1.3em;
+	}
 	.reader-nav{
 		background-color: white;
 		display: flex;
@@ -374,6 +377,10 @@ title {
 	.content-wrapper {
 		width: 700px;
 		margin: auto;
+		margin-top: 24px;
+		li{
+			margin: 1em 0;
+		}
 		div {
 		  background-color: white;
 		//   width: 50%;
