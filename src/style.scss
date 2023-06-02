@@ -372,11 +372,16 @@ title {
 		color: #999;
 	}
 	.content-wrapper {
+		width: 700px;
+		margin: auto;
 		div {
 		  background-color: white;
 		//   width: 50%;
 		//   height: 50%;
 		//   margin: auto;
+		}
+		img{
+			width: 100%;
 		}
 	}
 	&.mode-transition .content-wrapper {
