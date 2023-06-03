@@ -3,13 +3,20 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Tools from './tools';
 
+let currentUrl, encodedURL;
+
+// helper function for getting current url
+function getURL() {
+  currentUrl = window.location.href;
+  encodedURL = encodeURIComponent(currentUrl);
+}
+
 function Sidebar(props) {
   const [loading, setLoading] = useState('null');
   const [response, setResponse] = useState(null);
   const [parsedHtml, setParsedHtml] = useState(null);
   const [generalInfo, setGeneralInfo] = useState(null);
   const [sections, setSections] = useState(null);
-  const currentUrl = window.location.href;
 
   useEffect(() => {
     if (parsedHtml) {
@@ -17,15 +24,15 @@ function Sidebar(props) {
     }
   }, [parsedHtml, generalInfo, sections]);
 
-  const encodedURL = encodeURIComponent(currentUrl);
-
   // get request
   const callGet = () => {
     console.log('get method triggered');
-    axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
-      params: {
-        url: encodedURL,
-      },
+    getURL().then(() => {
+      axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
+        params: {
+          url: encodedURL,
+        },
+      });
     }).then((res) => {
       if (res !== null) {
         setParsedHtml(res.data.general.result_html);
@@ -37,12 +44,13 @@ function Sidebar(props) {
   };
 
   // turn on summarizer
-  const submit = (attempt = 1) => {
-    setLoading('start');
-    axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
-      url: currentUrl,
+  const submit = () => {
+    getURL().then(() => {
+      axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
+        url: currentUrl,
+      });
     }).then((res) => {
-      for (let i = 0; i < 80; i += 1) {
+      for (let i = 0; i < 50; i += 1) {
         setTimeout(callGet, 2000 * i);
       }
     });
