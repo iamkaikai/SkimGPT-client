@@ -100,10 +100,15 @@ title {
 		height: 100vh;
 		display: flex;
 		justify-content: center;
-		padding: 3em;
+		padding: 3em 1.8em;
 		overflow-y: scroll;
 		flex-wrap: wrap;
-
+		ul{
+			padding-left: 2.2em;
+			li{
+				padding-left: 2px;
+			}
+		}
 		h1{
 			margin: 0;
 			border: none;

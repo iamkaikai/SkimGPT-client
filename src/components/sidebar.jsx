@@ -27,12 +27,11 @@ function Sidebar(props) {
   // get request
   const callGet = () => {
     console.log('get method triggered');
-    getURL().then(() => {
-      axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
-        params: {
-          url: encodedURL,
-        },
-      });
+    getURL();
+    axios('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      params: {
+        url: encodedURL,
+      },
     }).then((res) => {
       if (res !== null) {
         setParsedHtml(res.data.general.result_html);
@@ -45,10 +44,10 @@ function Sidebar(props) {
 
   // turn on summarizer
   const submit = () => {
-    getURL().then(() => {
-      axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
-        url: currentUrl,
-      });
+    getURL();
+    setLoading('start');
+    axios.post('https://skimgpt-mongo.onrender.com/api/summarizers', {
+      url: currentUrl,
     }).then((res) => {
       for (let i = 0; i < 50; i += 1) {
         setTimeout(callGet, 2000 * i);
