@@ -11,6 +11,7 @@ import Section from './section';
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
   const [sections, setSections] = useState(null);
+  const [displaySections, setDisplaySections] = useState([]);
   // homes.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
   const printRef = React.useRef();
 
@@ -18,8 +19,9 @@ function Tools(props) {
     if (props.sections) {
       setSections(props.sections);
       console.log(sections);
+			setDisplaySections = 
     }
-  }, [props.sections]);
+  }, [props.sections, props.generalInfo]);
 
   // console.log(props.sections);
 
