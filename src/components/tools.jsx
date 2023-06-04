@@ -11,6 +11,7 @@ import Section from './section';
 function Tools(props) {
   const [tab, switchTab] = useState('summary');
   const [sections, setSections] = useState(null);
+  const [displaySections, setDisplaySections] = useState([]);
   // homes.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
   const printRef = React.useRef();
 
@@ -18,8 +19,20 @@ function Tools(props) {
     if (props.sections) {
       setSections(props.sections);
       console.log(sections);
+      console.log(`num sections: ${props.generalInfo.num_sections}`);
+      setDisplaySections(Array(props.generalInfo.num_sections - 1).fill({ title: 'Loading...', overview: '' }));
+      const tempArray = Array(props.generalInfo.num_sections - 1).fill({ title: 'Loading...', overview: '' });
+      if (sections) {
+        sections.map((section, idx) => {
+          console.log(`section: ${section.title}`);
+          tempArray[section.id - 1] = { title: section.title, overview: section.overview };
+          console.log(`temporary array: ${tempArray}`);
+          return true;
+        });
+        setDisplaySections(tempArray);
+      }
     }
-  }, [props.sections]);
+  }, [props.sections, props.generalInfo]);
 
   // console.log(props.sections);
 
@@ -60,7 +73,8 @@ function Tools(props) {
               <button type="button" className="tab">Retone</button>
             </div>
             <Summary generalInfo={props.generalInfo} />
-            {sections && sections.map((section, idx) => <Section section={section} index={idx} />)}
+            {/* {sections && sections.map((section, idx) => <Section section={section} index={idx} />)} */}
+            {displaySections && displaySections.map((section, idx) => <Section section={section} />)}
           </div>
         </div>
 
