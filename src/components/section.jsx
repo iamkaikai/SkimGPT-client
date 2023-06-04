@@ -11,7 +11,8 @@ function section(props) {
 
   return (
     <div id="section-container">
-      <p className="subtitle" dangerouslySetInnerHTML={{ __html: md.render(title) }} />
+      {/* <p className="subtitle" dangerouslySetInnerHTML={{ __html: md.render(title) }} /> */}
+      <p className="title">{title}</p>
       <p dangerouslySetInnerHTML={{ __html: md.render(overview) }} />
       {/* <p dangerouslySetInnerHTML={{ __html: md.render(content) }} /> */}
     </div>
