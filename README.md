@@ -30,19 +30,15 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
     - OpenAI API
 
 
-## Setup
-- npm install
-- npm run dev
-- make sure you update vite to the latest version
-
-
-## Deployment
-
-- git clone this repository
-- run 'npm run build' on project directory
-- go to Chrome Extensions page(chrome://extensions/)
-- In developer mode, click "load unpacked"
-- select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build')
+## Setup & Deployment
+*make sure you update vite to the latest version*
+1. git clone this repository
+2. run 'npm install' on project directory
+3. run 'npm run build' 
+4. go to Chrome Extensions page(chrome://extensions/)
+5. In developer mode, click "load unpacked"
+<img width="800" alt="Screen Shot 2023-06-05 at 2 52 04 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/1348dcc8-6945-4ad2-9149-4c2b58342606"> <br>
+7. select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build')
 
 
 ## Authors
