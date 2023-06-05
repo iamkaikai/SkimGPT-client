@@ -33,7 +33,7 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 Code Organization
 
 * `extension` - folder that enables the code to be run as Chrome extension
-    * `extension/manifest.json` - 
+    * `extension/manifest.json` - json file that provides important info about creating the extension code when running `npm run build`
 * `src/` - all source code
     * `src/index.jsx` - 
     * `src/app.jsx` - 
@@ -42,12 +42,12 @@ Code Organization
         * `src/components/summarizer_model.js` - enables fetching the summary from API
     * `src/actions/` - all actions
         * `src/actions/reader.jsx` - reader view
-        * `src/actions/sidebar.jsx` - the entire sidebar
-        * `src/actions/tools.jsx` - tabs, copy to clipboard, download pdf
-        * `src/actions/summary.jsx` - summary tab title and overview
-        * `src/actions/section.jsx` - summary tab section summaries
-        * `src/actions/retone.jsx` - retone tab content
+        * `src/actions/sidebar.jsx` - the entire sidebar, repeatedly makes GET calls to the backend and passes the info down to its child components
+        * `src/actions/tools.jsx` - tabs, copy to clipboard, download as pdf
+        * `src/actions/summary.jsx` - summary tab that displays the title and overview
+        * `src/actions/section.jsx` - summary tab that displays the section summaries
         * `src/actions/dropdown.jsx` - dropdown menu in retone tab
+        * `src/actions/retone.jsx` - retone tab that displays retone - not finished but backend is working
     * `src/reducers/` - all reducers
         * `src/reducers/index.js` - combines all reducers
         * `src/reducers/summary_reducer.js` - summarizer reducer
