@@ -16,9 +16,17 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 1. There is too much information for people to digest in a short period of time, and people are more likely to feel too overwhelmed with the length of an article and lose track of the main point.
     * Granted, article headlines and abstracts may be beneficial, but they are a bit too short and don't cover the topic in too much depth... so we need to find a middle ground.
 2. Some authors are extremely passionate about their perspective, and it may come off as aggressive, discouraging readers from finishing the article and understanding the author's main point.
+<br>
 
-### Mockups
-<img src="https://hackmd.io/_uploads/HkkgYozr2.png" width="500" />
+## Mockups
+- when users turn on the extension
+<img width="800" alt="Screen Shot 2023-06-05 at 2 53 54 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/4a554159-9206-41da-96bf-b983d1e23bb9"> <br> <br>
+
+- when the summary mode is on
+<img width="800" alt="Screen Shot 2023-06-05 at 2 53 40 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/7d356e7f-40c5-41df-9f85-69ced769b46a"> <br> <br>
+
+- when the reader mode is on
+<img width="800" alt="Screen Shot 2023-06-05 at 2 53 28 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/62a21968-dd57-49c8-932a-412d781a1cf6"> <br> <br>
 
 
 ## Architecture
@@ -28,7 +36,7 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 
 - APIs used
     - OpenAI API
-
+<br>
 
 ## Setup & Deployment
 *make sure you update vite to the latest version*
@@ -39,7 +47,7 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 5. In developer mode, click "load unpacked"
 <img width="800" alt="Screen Shot 2023-06-05 at 2 52 04 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/1348dcc8-6945-4ad2-9149-4c2b58342606"> <br>
 7. select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build')
-
+<br>
 
 ## Authors
 
@@ -49,9 +57,11 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 - Gyuri Hwang
 - Kyle Huang
 - Pedro Campos
+<br>
 
 ## Helpful Links
 - [Figma file](https://www.figma.com/file/D2RiAV9YWDM20AmD7uoDOv/Mockups?type=design&node-id=3%3A2&t=VXWciuczTsUaGeep-1)
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
+<br>
 
 ## Acknowledgments
