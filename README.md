@@ -16,16 +16,15 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 1. There is too much information for people to digest in a short period of time, and people are more likely to feel too overwhelmed with the length of an article and lose track of the main point.
     * Granted, article headlines and abstracts may be beneficial, but they are a bit too short and don't cover the topic in too much depth... so we need to find a middle ground.
 2. Some authors are extremely passionate about their perspective, and it may come off as aggressive, discouraging readers from finishing the article and understanding the author's main point.
-<br>
 
 ## Mockups
-- when users turn on the extension
+* when users turn on the extension
 <img width="800" alt="Screen Shot 2023-06-05 at 2 53 54 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/4a554159-9206-41da-96bf-b983d1e23bb9"> <br> <br>
 
-- when the summary mode is on
+* when the summary mode is on
 <img width="800" alt="Screen Shot 2023-06-05 at 2 53 40 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/7d356e7f-40c5-41df-9f85-69ced769b46a"> <br> <br>
 
-- when the reader mode is on
+* when the reader mode is on
 <img width="800" alt="Screen Shot 2023-06-05 at 2 53 28 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/62a21968-dd57-49c8-932a-412d781a1cf6"> <br> <br>
 
 
@@ -34,34 +33,47 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 - Chrome Extension Architecture
     - manifest.json enables the code to be run as Chrome extension.
 
-- APIs used
-    - OpenAI API
-<br>
+Code Organization
+
+* `src/` - all source code
+    * `src/server.js` - main entry point for the server
+    * `src/routes.js` - all routes
+    * `src/models/` - all models
+        * `src/models/summarizer_model.js` - summarizer model
+    * `src/controllers/` - all controllers
+        * `src/controllers/summarizer_controller.js` - summarizer controller
+* `package.json` - all dependencies and scripts
+* `package-lock.json` - all dependencies and versions
+* `Procfile` - for Heroku deployment
+* `.eslintrc.json` - eslint configuration
+* `.babelrc` - babel configuration
+* `.env` - environment variables (OPENAI API key)
+* `.gitignore` - gitignore file
+* `README.md` - this file
+* `img/` - all images
 
 ## Setup & Deployment
 *make sure you update vite to the latest version*
 1. git clone this repository
-2. run 'npm install' on project directory
-3. run 'npm run build' 
+2. run `npm install` on project directory
+3. run `npm run build`
 4. go to Chrome Extensions page(chrome://extensions/)
 5. In developer mode, click "load unpacked"
 <img width="800" alt="Screen Shot 2023-06-05 at 2 52 04 PM" src="https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/1348dcc8-6945-4ad2-9149-4c2b58342606"> <br>
-7. select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build')
-<br>
+7. select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do `npm run build`)
 
 ## Authors
 
-- Annie Tang
-- Ashley Liang
-- Di Luo
-- Gyuri Hwang
-- Kyle Huang
-- Pedro Campos
-<br>
+* Kyle Huang
+* Annie Tang
+* Pedro Campos
+* Gyuri Hwang
+* Ashley Liang
+* Di Luo
 
 ## Helpful Links
 - [Figma file](https://www.figma.com/file/D2RiAV9YWDM20AmD7uoDOv/Mockups?type=design&node-id=3%3A2&t=VXWciuczTsUaGeep-1)
 - [Chrome Extension Documentation](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
-<br>
 
 ## Acknowledgments
+Big thanks to Tim's starter express app template and previous labs/projects, the TAs Camden Hao and Zhoucai Ni for their help! Also shoutout to chatGPT for helping us figure out how to structure some code.
