@@ -3,7 +3,7 @@
 ![Team Photo](https://github.com/dartmouth-cs52-23s/project-skimgpt/assets/61445037/eca88b74-0bde-4dfe-ac96-430a6bc6e456) <br>
 
 ### Overview
-SkimGPT is a Chrome extension built to help the users efficiently digest online articles and blog posts. It uses GPT to generate summary of the webpage the user is currently on and displays it on the side.
+SkimGPT is a Chrome extension built to help users efficiently digest online articles and blog posts. It uses GPT to generate a summary of the webpage the user is currently on and displays it on the side.
 
 **Disclaimer: Due to the nature of GPT, the summarizer may take from 1 to 2 minutes to generate the result.**
 
