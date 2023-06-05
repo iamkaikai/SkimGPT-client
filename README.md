@@ -32,7 +32,7 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 
 Code Organization
 
-* `extension - folder that enables the code to be run as Chrome extension
+* `extension` - folder that enables the code to be run as Chrome extension
     * `extension/manifest.json` - 
 * `src/` - all source code
     * `src/index.jsx` - 
@@ -62,6 +62,8 @@ Code Organization
 
 Tools and Libraries Used
 * materialUI
+* jsPDF
+* html2canvas
 
 ## Setup & Deployment
 *make sure you update vite to the latest version*
