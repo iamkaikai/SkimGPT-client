@@ -30,27 +30,38 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 
 ## Architecture
 
-- Chrome Extension Architecture
-    - manifest.json enables the code to be run as Chrome extension.
-
 Code Organization
 
+* `extension - folder that enables the code to be run as Chrome extension
+    * `extension/manifest.json` - 
 * `src/` - all source code
-    * `src/server.js` - main entry point for the server
-    * `src/routes.js` - all routes
-    * `src/models/` - all models
-        * `src/models/summarizer_model.js` - summarizer model
-    * `src/controllers/` - all controllers
-        * `src/controllers/summarizer_controller.js` - summarizer controller
+    * `src/index.jsx` - 
+    * `src/app.jsx` - 
+    * `src/style.scss` - styling
+    * `src/components/` - all components
+        * `src/components/summarizer_model.js` - enables fetching the summary from API
+    * `src/actions/` - all actions
+        * `src/actions/reader.jsx` - reader view
+        * `src/actions/sidebar.jsx` - the entire sidebar
+        * `src/actions/tools.jsx` - tabs, copy to clipboard, download pdf
+        * `src/actions/summary.jsx` - summary tab title and overview
+        * `src/actions/section.jsx` - summary tab section summaries
+        * `src/actions/retone.jsx` - retone tab content
+        * `src/actions/dropdown.jsx` - dropdown menu in retone tab
+    * `src/reducers/` - all reducers
+        * `src/reducers/index.js` - combines all reducers
+        * `src/reducers/summary_reducer.js` - summarizer reducer
 * `package.json` - all dependencies and scripts
 * `package-lock.json` - all dependencies and versions
-* `Procfile` - for Heroku deployment
 * `.eslintrc.json` - eslint configuration
-* `.babelrc` - babel configuration
-* `.env` - environment variables (OPENAI API key)
+* `vite.config.js`-
+* `webpack.config.js` -
+* `index.html` -
 * `.gitignore` - gitignore file
 * `README.md` - this file
-* `img/` - all images
+
+Tools and Libraries Used
+* materialUI
 
 ## Setup & Deployment
 *make sure you update vite to the latest version*
