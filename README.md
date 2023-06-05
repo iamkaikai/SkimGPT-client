@@ -42,7 +42,7 @@ Research papers, news articles, and even blog posts are all relatively lengthy a
 - run 'npm run build' on project directory
 - go to Chrome Extensions page(chrome://extensions/)
 - In developer mode, click "load unpacked"
-- select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build'
+- select the extension folder, within the project folder. The extension folder should have manifest.json and content.js. (content.js is created after you do 'npm run build')
 
 
 ## Authors
