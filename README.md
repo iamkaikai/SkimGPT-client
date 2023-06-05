@@ -64,6 +64,7 @@ Tools and Libraries Used
 * materialUI
 * jsPDF
 * html2canvas
+* react-toggle
 
 ## Setup & Deployment
 *make sure you update vite to the latest version*
