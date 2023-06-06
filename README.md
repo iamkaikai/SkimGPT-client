@@ -54,13 +54,14 @@ Code Organization
 * `package.json` - all dependencies and scripts
 * `package-lock.json` - all dependencies and versions
 * `.eslintrc.json` - eslint configuration
-* `vite.config.js`-
-* `webpack.config.js` -
-* `index.html` -
+* `vite.config.js`- vite configuration file
+* `webpack.config.js` - webpack configuration file
+* `index.html` - main file, which leads to src/index.jsx
 * `.gitignore` - gitignore file
 * `README.md` - this file
 
 Tools and Libraries Used
+* webpack
 * materialUI
 * jsPDF
 * html2canvas
