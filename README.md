@@ -35,8 +35,8 @@ Code Organization
 * `extension` - folder that enables the code to be run as Chrome extension
     * `extension/manifest.json` - json file that provides important info about creating the extension code when running `npm run build`
 * `src/` - all source code
-    * `src/index.jsx` - 
-    * `src/app.jsx` - 
+    * `src/index.jsx`
+    * `src/app.jsx`
     * `src/style.scss` - styling
     * `src/components/` - all components
         * `src/components/summarizer_model.js` - enables fetching the summary from API
